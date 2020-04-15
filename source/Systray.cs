@@ -36,11 +36,21 @@ namespace Steam_Account_Changer
 
             foreach (UserDatabase.User u in UserDatabase.users)
             {
-                menuItem = new MenuItem();
-                menuItem.Index = cIndex++;
-                menuItem.Text = "Log into Account: " + u.alias;
-                menuItem.Click += new System.EventHandler(SelectUser);
-                contextMenu.MenuItems.Add(menuItem);
+                if ((u.username.Length > 0) && (u.password.Length > 0))
+                {
+                    menuItem = new MenuItem();
+                    menuItem.Index = cIndex++;
+                    menuItem.Text = "Log into Account: " + (u.alias.Length > 0 ? u.alias : u.username);
+                    menuItem.Click += new System.EventHandler(SelectUser);
+                    contextMenu.MenuItems.Add(menuItem);
+                }
+                else
+                {
+                    MessageBox.Show("Skipping steam account because it has either no username or no password assigned.\nUsername: " + u.username,
+                                    "Invalid account",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                }
             }
 
             menuItem = new MenuItem();
@@ -73,7 +83,7 @@ namespace Steam_Account_Changer
         }
         private static void SelectAbout(Object sender, EventArgs e)
         {
-            MessageBox.Show("Steam Account Changer\nAuthor: Leon Etienne\nVersion: v1.0\nThanks for using!\n\nMay Gaben be with you. Amen.",
+            MessageBox.Show("Steam Account Changer\nAuthor: Leon Etienne\nVersion: v1.0\nThanks for using my little tool!\n\nMay Gaben be with you. Amen.",
                             "About Steam Account Changer",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);

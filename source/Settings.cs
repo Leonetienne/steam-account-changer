@@ -20,14 +20,8 @@ namespace Steam_Account_Changer
             }
             else
             {
-                StreamWriter sw = File.CreateText("./steampath.cfg");
-                sw.Write("C:\\Program Files (x86)\\Steam\\steam.exe");
+                File.WriteAllText("./steampath.cfg", "C:\\Program Files (x86)\\Steam\\steam.exe");
                 steamPath = "C:\\Program Files (x86)\\Steam\\steam.exe";
-
-                MessageBox.Show("Steam Account Changer is missing the config file \"steampath.cfg\".\nIt got created with the default value:\nC:\\Program Files (x86)\\Steam\\steam.exe",
-                            "About Steam Account Changer",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
             }
 
             return;

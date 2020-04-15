@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace Steam_Account_Changer
 {
@@ -28,7 +29,20 @@ namespace Steam_Account_Changer
 
         public static void ReloadUsers()
         {
-            users = JsonConvert.DeserializeObject<List<User>>(File.ReadAllText("./accounts.json"));
+            string json = File.ReadAllText("./accounts.json");
+
+            try
+            {
+                users = JsonConvert.DeserializeObject<List<User>>(json);
+            }
+            catch (JsonException e)
+            {
+                MessageBox.Show("Fatal error: Unable to parse accounts.json!\nDid you mess up the json format?\nTipp: Use a jsonlinter for debugging. Just google for jsonlint",
+                                "Can't parse accounts.json",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                System.Environment.Exit(0);
+            }
 
             return;
         }
