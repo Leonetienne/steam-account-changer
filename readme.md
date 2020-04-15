@@ -17,3 +17,10 @@ If you have steam installed somewhere else, you can modify the path in `steampat
 
 
 A tutorial video is in the making...
+
+
+
+
+
+
+Special thanks to Newtonsoft for creating this awesome json nuget package and for Valve for giving steam command line arguments, which this program is using.
