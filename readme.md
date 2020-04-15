@@ -16,7 +16,8 @@ It's that simple!
 If you have steam installed somewhere else, you can modify the path in `steampath.cfg`.
 
 
-A tutorial video is in the making...
+Tutorial video (german voiceover only)
+https://youtu.be/2sSnsNbmoyw
 
 
 
